@@ -9,24 +9,15 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
 export class HomeComponent implements OnInit {
 
   pending = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
+    'Login'
   ];
 
   processing = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
+    'Check mails'
   ];
 
   done = [
-    'Go to Market',
-    'Clean room',
-    'Call friend'
+    'Send SRT Status to TM'
   ];
 
   constructor() {
@@ -43,6 +34,17 @@ export class HomeComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+    }
+
+  }
+
+  addTask(task: any) {
+    //console.log(task.value);
+    if (!this.pending.includes(task.value)) {
+      this.pending.push(task.value);
+      task.value = '';
+    } else {
+      alert("This task already exist.")
     }
   }
 }
